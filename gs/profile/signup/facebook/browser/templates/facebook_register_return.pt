@@ -9,7 +9,10 @@
     </title>
   </head>
   <body>
-    <span tal:replace="view/request"/>    
+    <span metal:fill-slot="body">
+      <span tal:replace="structure view/request"/>
+      <!-- <span tal:replace="structure view/user_data"/> -->
+    </span>
   </body>
 </html>
 

@@ -1,0 +1,9 @@
+<div id="signupmethod-facebook">
+<form tal:attributes="action view/auth_url">
+  <input type="hidden" name="redirect_uri" tal:attributes="value view/redirect_uri" />
+  <input type="hidden" name="scope" tal:attributes="value view/scope" />
+  <input type="hidden" name="client_id" tal:attributes="value view/client_id" />
+  <input type="hidden" name="state" tal:attributes="value view/state" />
+  <input id="facebook-signup-logo" style="background-image: url(/++resource++facebook-large.png); width: 121px; height: 40px; border: none; background-color: white" type="submit" value=""/>
+</form>
+</div>
