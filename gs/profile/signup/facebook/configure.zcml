@@ -34,7 +34,6 @@
   
    <utility 
     factory=".interfaces.GSPSFOFactory"
-    name="gs.profile.signup.facebook.options"
-    permission="zope.Public" />
+    name="gs.profile.signup.facebook.options" />
     
 </configure>

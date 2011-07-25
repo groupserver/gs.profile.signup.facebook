@@ -7,6 +7,7 @@ from Products.GSProfile.profileaudit import *
 from Products.CustomUserFolder.interfaces import IGSUserInfo
 from gs.profile.email.verify.emailverificationuser import EmailVerificationUser
 from gs.auth.oauth.client.facebook import decode_parameters
+from gs.option import ComponentOptions
 
 import logging
 log = logging.getLogger('gs.profile.signup.facebook')
@@ -57,6 +58,10 @@ class GSFacebookRegistrationReturn(BrowserView):
             # TODO: Do something if auth fails or is rejected
             pass
         
+        options = ComponentOptions(self.context, "gs.profile.signup.facebook")
+        app_id = options.get("app_id")
+        app_secret = options.get("app_secret")
+        assert (app_id and app_secret), "Both app_id and app_secret must be specified"
         fba = FacebookAuth(redirect_uri,app_id,app_secret)
         request = {'code': code}
         fba.complete_auth(request)
