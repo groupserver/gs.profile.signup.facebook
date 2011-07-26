@@ -11,7 +11,7 @@
   
    <browser:viewlet name="gs-facebook-register-method"
     class=".viewlets.FacebookSignup"
-    manager="gs.profile.signup.interfaces.ISignupMethods"
+    manager="gs.profile.signup.base.interfaces.ISignupMethods"
     template="browser/templates/signupmethod-facebook.pt"
     permission="zope.Public"
     weight="10" />

@@ -18,9 +18,9 @@ from Products.GSProfile.utils import profile_interface_name, \
 from gs.group.member.join.interfaces import IGSJoiningUser
 from gs.group.member.invite.inviter import Inviter
 from gs.profile.email.base.emailuser import EmailUser
-import gs.profile.signup.changeprofile
+import gs.profile.signup.base.changeprofile
 
-class FBChangeProfileForm(gs.profile.signup.changeprofile.ChangeProfileForm):
+class FBChangeProfileForm(gs.profile.signup.base.changeprofile.ChangeProfileForm):
     pageTemplateFileName = 'browser/templates/fb-changeprofile.pt'
     template = ZopeTwoPageTemplateFile(pageTemplateFileName)
     

@@ -6,11 +6,11 @@ from Products.CustomUserFolder.userinfo import GSUserInfo
 from gs.content.form.form import SiteForm
 from gs.profile.email.base.emailuser import EmailUser
 from gs.profile.password.interfaces import IGSPasswordUser
-from gs.profile.signup.interfaces import IGSSetPasswordRegister
+from gs.profile.signup.base.interfaces import IGSSetPasswordRegister
 
-import gs.profile.signup.setpassword
+import gs.profile.signup.base.setpassword
 
-class FBSetPasswordForm(gs.profile.signup.setpassword.SetPasswordForm):
+class FBSetPasswordForm(gs.profile.signup.base.setpassword.SetPasswordForm):
     pageTemplateFileName = 'browser/templates/setpassword.pt'
     template = ZopeTwoPageTemplateFile(pageTemplateFileName)
             
