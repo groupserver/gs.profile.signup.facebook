@@ -12,10 +12,6 @@ from gs.option import ComponentOptions
 import logging
 log = logging.getLogger('gs.profile.signup.facebook')
 
-# TODO: obviously these shouldn't be hard coded here
-app_id='139144879494776'
-app_secret='8190ec7c0375638b0a612f2f92901445'
-
 class GSFacebookRegistrationReturn(BrowserView):
     '''View object for the GroupServer Facebook Registration Return page'''
     def __init__(self, context, request):
@@ -33,21 +29,22 @@ class GSFacebookRegistrationReturn(BrowserView):
             try:
                 user = self.create_user()
             except:
-                pass
+                log.info("User %s already existed." % self.user_data['email'])
+                uri = u"/request_registration.html?email=%s" % self.user_data['email']
         else:
-            # TODO: redirect to usual registration process, we have no verified email
             log.info("Signup from facebook user had no email")
-
+            uri = u"/request_registration.html?email="
+        
         if user:
             state = None
             if self.request.form.has_key('state'):
                 state = decode_parameters(self.request.form['state'])
             if state:
-                uri = '/p/%s/fb_register_password.html?%s' % (user.getId(),state)
+                uri = u'/p/%s/fb_register_password.html?%s' % (user.getId(),state)
             else:
-                uri = '/p/%s/fb_register_password.html' % user.getId()
-                
-            self.request.response.redirect(uri)
+                uri = u'/p/%s/fb_register_password.html' % user.getId()
+        
+        self.request.response.redirect(uri)
 
     def facebook_auth(self):
         redirect_uri='http://test.forums.e-democracy.org/facebook_register_return.html'
