@@ -47,7 +47,7 @@ class GSFacebookRegistrationReturn(BrowserView):
         self.request.response.redirect(uri)
 
     def facebook_auth(self):
-        redirect_uri='http://test.forums.e-democracy.org/facebook_register_return.html'
+        redirect_uri='%s/facebook_register_return.html' % self.siteInfo.url
 
         if self.request.has_key('code'):
             code = self.request['code']
