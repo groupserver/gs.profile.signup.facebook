@@ -7,7 +7,7 @@
     name="facebook_register_return.html"
     class=".facebookreturn.GSFacebookRegistrationReturn"
     template="browser/templates/facebook_register_return.pt"
-    permission="zope2.View" />
+    permission="zope2.Public" />
   
    <browser:viewlet name="gs-facebook-register-method"
     class=".viewlets.FacebookSignup"

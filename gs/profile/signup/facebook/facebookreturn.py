@@ -49,6 +49,8 @@ class GSFacebookRegistrationReturn(BrowserView):
     def facebook_auth(self):
         redirect_uri='%s/facebook_register_return.html' % self.siteInfo.url
 
+        log.info('Attempting facebook oauth')
+
         if self.request.has_key('code'):
             code = self.request['code']
         else:
@@ -62,7 +64,9 @@ class GSFacebookRegistrationReturn(BrowserView):
         fba = FacebookAuth(redirect_uri,app_id,app_secret)
         request = {'code': code}
         fba.complete_auth(request)
+        log.info('Completed facebook auth')
         self.user_data = fba.data()
+        log.info('Received user data from facebook')
         
     def create_user(self):
         email = self.user_data['email']
