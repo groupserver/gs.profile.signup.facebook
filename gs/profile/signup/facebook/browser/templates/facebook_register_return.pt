@@ -1,18 +1,5 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:tal="http://xml.zope.org/namespaces/tal"
-  xmlns:metal="http://xml.zope.org/namespaces/metal"
-  metal:use-macro="context/@@groupserver_layout/page">
-  <head>
-    <title metal:fill-slot="title">
-      Facebook Registration
-      <span tal:replace="view/siteInfo/get_name">this site</span>
-    </title>
-  </head>
-  <body>
-    <span metal:fill-slot="body">
-      <span tal:replace="structure view/request"/>
-      <!-- <span tal:replace="structure view/user_data"/> -->
-    </span>
-  </body>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head></head>
+  <body>Facebook return</body>
 </html>
 

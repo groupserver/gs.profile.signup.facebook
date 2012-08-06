@@ -66,7 +66,7 @@ class GSFacebookRegistrationReturn(BrowserView):
         fba.complete_auth(request)
         log.info('Completed facebook auth')
         self.user_data = fba.data()
-        log.info('Received user data from facebook')
+        log.info('Received user data from facebook: %s' % self.user_data)
         
     def create_user(self):
         email = self.user_data['email']
