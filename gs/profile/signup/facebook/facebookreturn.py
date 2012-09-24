@@ -49,11 +49,8 @@ class GSFacebookRegistrationReturn(GroupPage):
 
         log.info('Attempting facebook oauth')
 
-        if 'code' in self.request:
-            code = self.request['code']
-        else:
-            # TODO: Do something if auth fails or is rejected
-            pass
+        code = self.request.get('code', '')
+        # TODO: Do something if auth fails or is rejected
 
         options = ComponentOptions(self.context, "gs.profile.signup.facebook")
         app_id = options.get("app_id")
