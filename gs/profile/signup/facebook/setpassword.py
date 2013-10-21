@@ -1,19 +1,28 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
+##############################################################################
+#
+# Copyright © 2013 OnlineGroups.net and Contributors.
+# All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+###############################################################################
 from zope.component import createObject
 from zope.formlib import form
 from Products.Five.browser.pagetemplatefile import ZopeTwoPageTemplateFile
-from Products.CustomUserFolder.userinfo import GSUserInfo
-from gs.content.form.form import SiteForm
-from gs.profile.email.base.emailuser import EmailUser
 from gs.profile.password.interfaces import IGSPasswordUser
-from gs.profile.signup.base.interfaces import IGSSetPasswordRegister
+from gs.profile.signup.base.setpassword import SetPasswordForm
 
-import gs.profile.signup.base.setpassword
 
-class FBSetPasswordForm(gs.profile.signup.base.setpassword.SetPasswordForm):
+class FBSetPasswordForm(SetPasswordForm):
     pageTemplateFileName = 'browser/templates/setpassword.pt'
     template = ZopeTwoPageTemplateFile(pageTemplateFileName)
-            
+
     @form.action(label=u'Set', failure='handle_set_action_failure')
     def handle_set(self, action, data):
         assert self.context
@@ -34,5 +43,5 @@ class FBSetPasswordForm(gs.profile.signup.base.setpassword.SetPasswordForm):
             gid = ''
         uri = '%s?form.joinable_groups:list=%s&form.came_from=%s' %\
             (uri, gid, cf)
-            
+
         return self.request.response.redirect(uri)
