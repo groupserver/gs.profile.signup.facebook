@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ############################################################################
 #
-# Copyright © 2011, 2012, 2013, 2014, 2015 E-Democracy.org and
+# Copyright © 2011, 2012, 2013, 2014, 2015, 2016 E-Democracy.org and
 # Contributors.
 #
 # All Rights Reserved.
